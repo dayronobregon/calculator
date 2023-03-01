@@ -11,9 +11,13 @@ pool: MyAgentPoolTest
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '16.x'
+    versionSource: 'spec'
+    versionSpec: '18.x'
+    checkLatest: true
   displayName: 'Install Node.js'
 
+- script: |
+    npm cache clean --force
 - script: |
     npm install
     npm run build
